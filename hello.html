@@ -1,21 +1,26 @@
 <html>
 
     <head>
-        <script type="importmap">
-            {
-              "imports": {
-                "@google/generative-ai": "https://esm.run/@google/generative-ai"
-              }
-            }
-          </script>
+      <link rel = "stylesheet" href = "styles.css">
+      <script type="importmap">
+        {
+          "imports": {
+            "@google/generative-ai": "https://esm.run/@google/generative-ai"
+          }
+        }
+      </script>
     </head>
 
     <body>
-        <input placeholder = "Start typing" id = "mainTextInput" type = "text" autofocus>
-        <h3 id = "responseText"></h3>
 
-        <button id = "mainButton">Hello</button>
-        <script src = "dist/bundle.js"></script>
+      <div id = "inputnSend">
+        <input placeholder = "Start typing" id = "mainTextInput" type = "text" autofocus>
+        <button id = "mainButton"><img src = "./Resources/sendIcon.png" width = 12></button>
+      </div>
+
+      <p id = "responseText"></p>
+
+      <script src = "dist/bundle.js"></script>
     </body>
 
 </html>

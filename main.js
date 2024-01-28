@@ -20,7 +20,7 @@ function mainFunc() {
     document.getElementById("responseText").innerHTML = "..."
     
     const MODEL_NAME = "gemini-pro";
-    const API_KEY = "AIzaSyAY5PF50a9cNJFKv_Uk4EFdxHSCownkQpE";
+    const API_KEY = "AIzaSyDVigTO9l-21jvtAidvPC29SV2aYcxVlqY";
     
     async function runChat() {
         const genAI = new GoogleGenerativeAI(API_KEY);
@@ -61,8 +61,29 @@ function mainFunc() {
     
         const result = await chat.sendMessage(input.value);
         const response = result.response;
-        document.getElementById("responseText").innerHTML = response.text()
+        
         console.log(response.text())
+
+        var i = 0
+        var txt = response.text()
+
+        function removeBold(text) {
+            return text.replace(/\*\*(.*?)\*\*/g, "$1");
+          }
+        
+        txt = removeBold(txt)
+        console.log(txt)
+
+        document.getElementById("responseText").textContent = ""
+
+        function typeEffect() {
+            document.getElementById("responseText").textContent += txt.charAt(i)
+            window.setTimeout(typeEffect, 10)
+            i++
+        }
+
+        typeEffect()
+
     }
     
     runChat();
