@@ -59,14 +59,19 @@ function mainFunc() {
         ],
         });
 
-        const msg = "new york";
+        function removeDoubleAsterisks(text) {
+            return text.replace(/\*\*/g, '');
+        }
+
+        const msg = document.getElementById("mainTextInput").value;
+        console.log(msg)
 
         const result = await model.generateContentStream(msg);
         
         let text = '';
         for await (const chunk of result.stream) {
             const chunkText = chunk.text();
-            text += chunkText;
+            text += removeDoubleAsterisks(chunkText);
             document.getElementById("responseText").textContent = text
         }
 
