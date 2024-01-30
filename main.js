@@ -58,31 +58,17 @@ function mainFunc() {
         history: [
         ],
         });
-    
-        const result = await chat.sendMessage(input.value);
-        const response = result.response;
+
+        const msg = "new york";
+
+        const result = await model.generateContentStream(msg);
         
-        console.log(response.text())
-
-        var i = 0
-        var txt = response.text()
-
-        function removeBold(text) {
-            return text.replace(/\*\*(.*?)\*\*/g, "$1");
-          }
-        
-        txt = removeBold(txt)
-        console.log(txt)
-
-        document.getElementById("responseText").textContent = ""
-
-        function typeEffect() {
-            document.getElementById("responseText").textContent += txt.charAt(i)
-            window.setTimeout(typeEffect, 10)
-            i++
+        let text = '';
+        for await (const chunk of result.stream) {
+            const chunkText = chunk.text();
+            text += chunkText;
+            document.getElementById("responseText").textContent = text
         }
-
-        typeEffect()
 
     }
     
