@@ -4,7 +4,7 @@ import { GoogleGenerativeAI, HarmCategory, HarmBlockThreshold } from "@google/ge
 var input = document.getElementById("mainTextInput")
 input.addEventListener("keydown", runScript)
 
-document.getElementById("mainButton").addEventListener("click", mainFunc) // Call the function by its assigned name
+document.getElementById("mainButton").addEventListener("click", mainFunc)
 
 
 function runScript(event) {
@@ -16,7 +16,6 @@ function runScript(event) {
 
 function mainFunc() {
 
-    console.log("Yay")
     document.getElementById("responseText").innerHTML = "..."
     
     const MODEL_NAME = "gemini-pro";
@@ -63,7 +62,21 @@ function mainFunc() {
             return text.replace(/\*\*/g, '');
         }
 
-        const msg = document.getElementById("mainTextInput").value;
+        var toAdd = ""
+        let optionsMenu = document.getElementById("responseLengthOptionMenu")
+
+        if (optionsMenu.value == "Short") {
+            toAdd = "Answer in brief: "
+        } else if (optionsMenu.value == "Points") {
+            toAdd = "Answer in points: "
+        } else if (optionsMenu.value == "Long") {
+            toAdd = "Answer in detail: "
+        }
+
+        console.log(toAdd)
+
+        const msg = toAdd + document.getElementById("mainTextInput").value;
+
         console.log(msg)
 
         const result = await model.generateContentStream(msg);

@@ -14,16 +14,35 @@
         }
       </script>
 
-      <div id = "inputnSend">
-        <input placeholder = "Start typing" id = "mainTextInput" type = "text" autofocus>
-        <button id = "mainButton"><img src = "./Resources/sendIcon.png" width = 12></button>
+      <div id = "settings">
+
+        <div id = "responseLength">
+
+          <p id = "responseLengthTag">Response Type</p>
+
+          <select id = "responseLengthOptionMenu">
+            <option>Default</option>
+            <option>Short</option>
+            <option>Long</option>
+            <option>Points</option>
+          </select>
+
+        </div>
+
       </div>
 
-      <p id = "responseText"></p>
+      <div id = "core">
+
+        <div id = "inputnSend">
+          <input placeholder = "Start typing" id = "mainTextInput" type = "text" autofocus>
+          <button id = "mainButton"><img src = "./Resources/sendIcon.png" width = 12></button>
+          <p id = "responseText"></p>
+        </div>
+
+      </div>
 
       <script type = "module" src = "main.js"></script>
 
-      <!--<script src = "dist/bundle.js"></script>-->
     </body>
 
 </html>
