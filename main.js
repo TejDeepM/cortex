@@ -8,13 +8,16 @@ document.getElementById("mainButton").addEventListener("click", mainFunc)
 
 
 function runScript(event) {
-    console.log("I'm here")
     if (event.keyCode == 13) {
         mainFunc()
     }
 }
 
 function mainFunc() {
+
+    document.body.style.backgroundColor = "rgb(30, 30, 30)";
+    document.getElementById("responseText").style.color = "rgb(200, 200, 200)";
+
 
     document.getElementById("responseText").innerHTML = "..."
     
@@ -73,12 +76,7 @@ function mainFunc() {
             toAdd = "Answer in detail: "
         }
 
-        console.log(toAdd)
-
         const msg = toAdd + document.getElementById("mainTextInput").value;
-
-        console.log(msg)
-
         const result = await model.generateContentStream(msg);
         
         let text = '';
@@ -89,6 +87,13 @@ function mainFunc() {
         }
 
     }
+
+    function handleError(error) {
+        document.getElementById("responseText").textContent = error.message
+        document.body.style.backgroundColor = "rgb(40, 0, 0)";
+        document.getElementById("responseText").style.color = "rgb(255, 150, 150)";
+    }
+
+    runChat().catch(handleError);
     
-    runChat();
 }
