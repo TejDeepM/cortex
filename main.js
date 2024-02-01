@@ -6,6 +6,10 @@ input.addEventListener("keydown", runScript)
 
 document.getElementById("mainButton").addEventListener("click", mainFunc)
 
+if (window.location["href"].split("?q=")[1] != "") {
+    mainFunc(window.location["href"].split("?q=")[1])
+}
+
 
 function runScript(event) {
     if (event.keyCode == 13) {
@@ -13,7 +17,7 @@ function runScript(event) {
     }
 }
 
-function mainFunc() {
+function mainFunc(query = "") {
 
     document.body.style.backgroundColor = "rgb(30, 30, 30)";
     document.getElementById("responseText").style.color = "rgb(200, 200, 200)";
