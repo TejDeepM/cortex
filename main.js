@@ -8,6 +8,7 @@ document.getElementById("mainButton").addEventListener("click", mainFunc)
 
 if (window.location["href"].split("?q=")[1] != "") {
     mainFunc(window.location["href"].split("?q=")[1])
+    console.log(window.location["href"].split("?q=")[1])
 }
 
 
@@ -78,6 +79,8 @@ function mainFunc(query = "") {
             toAdd = "Answer in points: "
         } else if (optionsMenu.value == "Long") {
             toAdd = "Answer in detail: "
+        } else {
+            toAdd = query
         }
 
         const msg = toAdd + document.getElementById("mainTextInput").value;
