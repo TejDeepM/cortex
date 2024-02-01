@@ -6,9 +6,9 @@ input.addEventListener("keydown", runScript)
 
 document.getElementById("mainButton").addEventListener("click", mainFunc)
 
-if (window.location["href"].split("?q=")[1] != "") {
-    mainFunc(window.location["href"].split("?q=")[1])
-    console.log(window.location["href"].split("?q=")[1])
+let Query = window.location["href"].split("?q=")[1]
+if (Query != undefined) {
+    mainFunc(Query)
 }
 
 
