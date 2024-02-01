@@ -54,13 +54,12 @@ body {
 
 #settings {
     position: absolute;
-    top: 2%
+    top: 3%;
+    left: 10%;
 }
 
 #responseLengthTag {
     position: relative;
-    top: 10%;
-    left: 10%;
     font-size: 16px;
     color: rgb(200, 200, 200);
     font-family: Arial, Helvetica, sans-serif;
@@ -71,8 +70,6 @@ body {
     position: relative;
     width: 100px;
     height: 30px;
-    top: 10%;
-    left: 10%;
     font-size: 16px;
     color: rgb(200, 200, 200);
     background-color: rgb(40, 40, 40);
