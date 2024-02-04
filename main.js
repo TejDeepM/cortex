@@ -9,7 +9,7 @@ document.getElementById("mainButton").addEventListener("click", check)
 
 let Query = window.location["href"].split("?q=")[1]
 if (Query != undefined) {
-    mainFunc(query = Query)
+    mainFunc("", Query)
 }
 
 function runScript(event) {
