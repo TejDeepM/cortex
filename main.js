@@ -11,7 +11,6 @@ if (Query != undefined) {
     mainFunc(Query)
 }
 
-
 function runScript(event) {
     if (event.keyCode == 13) {
         mainFunc()
@@ -23,8 +22,9 @@ function mainFunc(query = "") {
     document.body.style.backgroundColor = "rgb(30, 30, 30)";
     document.getElementById("responseText").style.color = "rgb(200, 200, 200)";
 
-
-    document.getElementById("responseText").innerHTML = "..."
+    document.getElementById("responseText").className = "animate__animated animate__zoomOut";
+    document.getElementById("loadingIcon").hidden = false;
+    document.getElementById("loadingIcon").className = "animate__animated animate__zoomIn"
     
     const MODEL_NAME = "gemini-pro";
     const API_KEY = "AIzaSyDVigTO9l-21jvtAidvPC29SV2aYcxVlqY";
@@ -86,6 +86,10 @@ function mainFunc(query = "") {
         const msg = toAdd + document.getElementById("mainTextInput").value;
         const result = await model.generateContentStream(msg);
         
+        document.getElementById("responseText").className = "animate__animated animate__zoomIn";
+        document.getElementById("responseText").hidden = false;
+        document.getElementById("loadingIcon").hidden = true;
+
         let text = '';
         for await (const chunk of result.stream) {
             const chunkText = chunk.text();

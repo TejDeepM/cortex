@@ -4,6 +4,7 @@
 
     <head>
       <link rel = "stylesheet" href = "styles.css">
+      <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     </head>
 
     <body>
@@ -18,7 +19,7 @@
 
       <div id = "settings">
 
-        <div id = "responseLength">
+        <div id = "responseLength" class = "animate__animated animate__backInLeft">
 
           <p id = "responseLengthTag">Response Type</p>
 
@@ -33,15 +34,13 @@
 
       </div>
 
-      <div id = "core">
-
         <div id = "inputnSend">
-          <input placeholder = "Start typing" id = "mainTextInput" type = "text" autofocus>
-          <button id = "mainButton"><img src = "./Resources/sendIcon.png" width = 12></button>
-          <p id = "responseText"></p>
+          <input placeholder = "Start typing" id = "mainTextInput" type = "text" autofocus class = "animate__animated animate__backInDown">
+          <button id = "mainButton" class = "animate__animated animate__backInRight"><img src = "./Resources/sendIcon.png" width = 12></button>
+          <img src = "./Resources/LoadingIcon.gif" id = "loadingIcon" width = 120px height = 100px hidden></image>
+          <p id = "responseText" hidden></p>
+          
         </div>
-
-      </div>
 
       <script type = "module" src = "main.js"></script>
 
