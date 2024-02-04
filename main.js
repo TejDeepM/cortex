@@ -3,21 +3,28 @@ import { GoogleGenerativeAI, HarmCategory, HarmBlockThreshold } from "@google/ge
 
 var input = document.getElementById("mainTextInput")
 input.addEventListener("keydown", runScript)
+input.class = ""
 
-document.getElementById("mainButton").addEventListener("click", mainFunc)
+document.getElementById("mainButton").addEventListener("click", check)
 
 let Query = window.location["href"].split("?q=")[1]
 if (Query != undefined) {
-    mainFunc(Query)
+    mainFunc(query = Query)
 }
 
 function runScript(event) {
     if (event.keyCode == 13) {
+        check()
+    }
+}
+
+function check() {
+    if (document.getElementById("mainTextInput").value != "") {
         mainFunc()
     }
 }
 
-function mainFunc(query = "") {
+function mainFunc(event, query = "") {
 
     document.body.style.backgroundColor = "rgb(30, 30, 30)";
     document.getElementById("responseText").style.color = "rgb(200, 200, 200)";
@@ -25,6 +32,7 @@ function mainFunc(query = "") {
     document.getElementById("responseText").className = "animate__animated animate__zoomOut";
     document.getElementById("loadingIcon").hidden = false;
     document.getElementById("loadingIcon").className = "animate__animated animate__zoomIn"
+    document.getElementById("mainButton").className = "animate__animated animate__jello"
     
     const MODEL_NAME = "gemini-pro";
     const API_KEY = "AIzaSyDVigTO9l-21jvtAidvPC29SV2aYcxVlqY";
@@ -86,9 +94,11 @@ function mainFunc(query = "") {
         const msg = toAdd + document.getElementById("mainTextInput").value;
         const result = await model.generateContentStream(msg);
         
+        document.getElementById("responseText").className = "animate__animated animate__zoomOut";
         document.getElementById("responseText").className = "animate__animated animate__zoomIn";
         document.getElementById("responseText").hidden = false;
         document.getElementById("loadingIcon").hidden = true;
+        document.getElementById("mainButton").className = ""
 
         let text = '';
         for await (const chunk of result.stream) {
@@ -106,5 +116,5 @@ function mainFunc(query = "") {
     }
 
     runChat().catch(handleError);
-    
+
 }

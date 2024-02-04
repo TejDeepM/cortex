@@ -1,6 +1,8 @@
 
-body {
-    background-color: rgb(30, 30, 30);
+html {
+    background: repeating-linear-gradient(to bottom right, rgb(0, 0, 62), rgb(0, 8, 156)) no-repeat;
+    height: 100%;
+    width: 100%;
 }
 
 #inputnSend {
@@ -16,9 +18,10 @@ body {
     font-size: 16px;
     color: rgb(200, 200, 200);
     background-color: rgb(60, 60, 60);
-    border: none;
     border-radius: 5px;
     position: relative;
+    border-color: white;
+    border-width: 1px;
 }
 
 #mainButton {
@@ -30,8 +33,9 @@ body {
     font-size: 16px;
     color: rgb(200, 200, 200);
     background-color: rgb(50, 50, 50);
-    border: none;
     border-radius: 5px;
+    border-color: white;
+    border-width: 1px;
 }
 
 #responseText {
@@ -81,5 +85,11 @@ body {
     font-size: 13px;
     text-align: center;
     font-size: 15px;
+}
+
+#loadingIcon {
+    position: absolute;
+    padding-top: 20px;
+    left: -30px;
 }
 
