@@ -27,7 +27,21 @@ html {
 
 #mainButton {
     position: relative;
-    width: 10vw;
+    width: 4vw;
+    height: 30px;
+    padding-left: 1vw;
+    padding-right: 1vw;
+    font-size: 16px;
+    color: rgb(200, 200, 200);
+    background-color: rgb(50, 50, 50);
+    border-radius: 5px;
+    border-color: white;
+    border-width: 1px;
+}
+
+#resetButton {
+    position: relative;
+    width: 4vw;
     height: 30px;
     padding-left: 1vw;
     padding-right: 1vw;
