@@ -12,11 +12,6 @@ document.getElementById("resetButton").addEventListener("click", reset)
 sendButton.addEventListener("click", check)
 input.class = ""
 
-let Query = window.location["href"].split("?q=")[1]
-if (Query != undefined) {
-    mainFunc("", Query)
-}
-
 function runScript(event) {
     if (event.keyCode == 13) {
         check()
@@ -38,14 +33,14 @@ function reset() {
 
 reset()
 
-const generationConfig = {
+var generationConfig = {
     temperature: 0.9,
     topK: 1,
     topP: 1,
     maxOutputTokens: 2048,
 };
 
-const safetySettings = [
+var safetySettings = [
     {
         category: HarmCategory.HARM_CATEGORY_HARASSMENT,
         threshold: HarmBlockThreshold.BLOCK_ONLY_HIGH,
@@ -63,6 +58,12 @@ const safetySettings = [
         threshold: HarmBlockThreshold.BLOCK_ONLY_HIGH,
     },
     ];
+
+let Query = window.location["href"].split("?q=")[1]
+if (Query != undefined) {
+    input.value = Query.replace(/%20/g, " ")
+    mainFunc("", Query)
+}
 
 function mainFunc(event, query = "") {
 
@@ -127,6 +128,7 @@ function mainFunc(event, query = "") {
 
     function handleError(error) {
         document.getElementById("responseText").textContent = error.message
+        document.getElementById("responseText").hidden = false;
         document.body.style.backgroundColor = "rgb(40, 0, 0)";
         document.getElementById("responseText").style.color = "rgb(255, 150, 150)";
         console.log(error)
