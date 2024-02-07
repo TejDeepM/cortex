@@ -14,7 +14,7 @@ html {
 
 #mainTextInput {
     width: 60vw;
-    height: 30px;
+    height: 40px;
     padding-left: 15px;
     font-size: 16px;
     color: rgb(200, 200, 200);
@@ -28,9 +28,7 @@ html {
 #mainButton {
     position: relative;
     width: 4vw;
-    height: 30px;
-    padding-left: 1vw;
-    padding-right: 1vw;
+    height: 40px;
     font-size: 16px;
     color: rgb(200, 200, 200);
     background-color: rgb(50, 50, 50);
@@ -41,10 +39,9 @@ html {
 
 #resetButton {
     position: relative;
+    text-align: center;
     width: 4vw;
-    height: 30px;
-    padding-left: 1vw;
-    padding-right: 1vw;
+    height: 40px;
     font-size: 16px;
     color: rgb(200, 200, 200);
     background-color: rgb(50, 50, 50);
@@ -54,8 +51,8 @@ html {
 }
 
 #responseText {
+    overflow-y: scroll;
     width: 70vw;
-    max-height: 75%;
     padding-left: 15px;
     padding-top: 10px;
     padding-right: 15px;
@@ -66,14 +63,20 @@ html {
     border: none;
     border-radius: 5px;
     position: relative;
+    top: 3%;
+    max-height: 75%;
     font-family: Arial, Helvetica, sans-serif;
     white-space: pre-line;
-    overflow-y: scroll;
 }
 
 #responseText::-webkit-scrollbar {width: 6px; height: 4px; background: #989898; border-radius: 10px }
 #responseText::-webkit-scrollbar-thumb { background-color: #666666; -webkit-border-radius: 10px}
 
+#loadingIcon {
+    position: absolute;
+    padding-top: 40px;
+    left: -30px;
+}
 
 #settings {
     position: absolute;
@@ -102,10 +105,3 @@ html {
     text-align: center;
     font-size: 15px;
 }
-
-#loadingIcon {
-    position: absolute;
-    padding-top: 20px;
-    left: -30px;
-}
-
