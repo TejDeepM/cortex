@@ -1,8 +1,33 @@
 
 import { GoogleGenerativeAI, HarmCategory, HarmBlockThreshold } from "@google/generative-ai";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+import { doc, getDoc, getFirestore } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+const firebaseConfig = {
+    apiKey: "AIzaSyBxbbCpxBvU6HmCA6M-KyH9EJqwc5Htb0Q",
+    authDomain: "cortex-c233b.firebaseapp.com",
+    projectId: "cortex-c233b",
+    storageBucket: "cortex-c233b.appspot.com",
+    messagingSenderId: "285672106481",
+    appId: "1:285672106481:web:a7786cf856093a12bcbc50",
+    measurementId: "G-TDTGXCY342"
+};
+
+console.log("Firebase loaded");
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+const docRef = doc(db, "cortex-api-key", "0Cg9VOZNMsMtCMhQGfl7");
+const docSnap = await getDoc(docRef);
+
+if (docSnap.exists()) {
+    var API_KEY = docSnap.data()["cortex-api"]
+} else {
+    window.alert("Cannot find API key")
+}
 
 const MODEL_NAME = "gemini-pro";
-const API_KEY = "AIzaSyDVigTO9l-21jvtAidvPC29SV2aYcxVlqY";
 
 var input = document.getElementById("mainTextInput")
 var sendButton = document.getElementById("mainButton")
